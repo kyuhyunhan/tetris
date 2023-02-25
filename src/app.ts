@@ -8,4 +8,5 @@ export const launchApp = () => {
     app.style.width = "400px";
     app.style.height = "100%";
   }
+  return app;
 };

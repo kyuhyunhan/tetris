@@ -2,6 +2,7 @@ import "./style.css";
 import { COLORS } from "./constants/colors";
 import { launchApp } from "./app";
 import { drawCanvas } from "./canvas";
+import { makeButtons } from "./buttons";
 
 const root = document.querySelector<HTMLElement>(":root");
 
@@ -11,5 +12,8 @@ body!.style.width = "100vw";
 body!.style.height = "100vh";
 body!.style.backgroundColor = COLORS.GENERAL.BACKGROUND;
 
-launchApp();
-drawCanvas();
+const app = launchApp();
+if (app) {
+  makeButtons(app);
+  drawCanvas();
+}
