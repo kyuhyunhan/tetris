@@ -9,12 +9,19 @@ export const makeButtons = (app: HTMLDivElement) => {
   endButton.innerHTML = "END";
   resetButton.innerHTML = "RESET";
 
+  // callback으로 function(){}을 사용해야 내부에서 this 참조가 가능함
   startButton.addEventListener("click", () => {
     startGame();
-    console.log(this);
+    startButton.style.display = "none";
   });
-  endButton.addEventListener("click", () => {});
-  resetButton.addEventListener("click", () => {});
+  endButton.addEventListener("click", () => {
+    endGame();
+    startButton.style.display = "block";
+  });
+  resetButton.addEventListener("click", () => {
+    resetGame();
+    startButton.style.display = "block";
+  });
 
   buttons.appendChild(startButton);
   buttons.appendChild(endButton);
@@ -22,4 +29,18 @@ export const makeButtons = (app: HTMLDivElement) => {
   app.appendChild(buttons);
 };
 
+// responsible for drawing and dropping the tetris pieces
 const startGame = () => {};
+
+const endGame = () => {};
+
+const resetGame = () => {};
+
+const createMatrix = (width: number, height: number): number[][] => {
+  const matrix = [];
+
+  while (height--) {
+    matrix.push(new Array(width).fill(0));
+  }
+  return matrix;
+};
