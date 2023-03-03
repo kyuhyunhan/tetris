@@ -1,8 +1,7 @@
 import "./style.css";
+import { App } from "./components/app";
+import { Button } from "./components/button";
 import { COLORS } from "./constants/colors";
-import { launchApp } from "./app";
-import { drawCanvas } from "./canvas";
-import { makeButtons } from "./buttons";
 
 const root = document.querySelector<HTMLElement>(":root");
 
@@ -14,4 +13,6 @@ if (body) {
   body.style.backgroundColor = COLORS.GENERAL.BACKGROUND;
 }
 
-const app = launchApp();
+const app = new App();
+const startButton = new Button({ value: "start" });
+// app.appendElement(startButton);
